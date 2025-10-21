@@ -90,8 +90,8 @@ erDiagram
     BIGINT replaced_by
     TEXT notes
   }
-  CRYPTO_KEYS }o--|| CRYPTO_KEYS : (replaced_by)
-  CRYPTO_KEYS }o--|| USERS : (created_by)
+  CRYPTO_KEYS }o--|| CRYPTO_KEYS : "replaced_by"
+  CRYPTO_KEYS }o--|| USERS : "created_by"
 ```
 
 ## Indexes
