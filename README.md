@@ -2,7 +2,7 @@
 
 ![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
 
-> Schema package for table **crypto_keys** (repo: $slug).
+> Schema package for table **crypto_keys** (repo: `crypto-keys`).
 
 ## Files
 ```
@@ -44,13 +44,13 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 | file_path | VARCHAR(1024) | YES | — |  |
 | fingerprint | CHAR(64) | YES | — |  |
 | key_meta | JSON | YES | — |  |
-| key_type | ENUM(''dek'',''kek'',''hmac'',''pepper'') | YES | — |  |
+| key_type | ENUM('dek','kek','hmac','pepper') | YES | — |  |
 | algorithm | VARCHAR(64) | YES | — |  |
 | length_bits | SMALLINT | YES | — |  |
-| origin | ENUM(''local'',''kms'',''imported'') | YES | — |  |
-| usage | SET(''encrypt'',''decrypt'',''sign'',''verify'',''wrap'',''unwrap'') | YES | — |  |
+| origin | ENUM('local','kms','imported') | YES | — |  |
+| usage | SET('encrypt','decrypt','sign','verify','wrap','unwrap') | YES | — |  |
 | scope | VARCHAR(100) | YES | — |  |
-| status | ENUM(''active'',''retired'',''compromised'',''archived'') | NO | '' |  |
+| status | ENUM('active','retired','compromised','archived') | NO | '' |  |
 | is_backup_encrypted | BOOLEAN | NO | 0 |  |
 | backup_blob | LONGBLOB | YES | — |  |
 | created_by | BIGINT UNSIGNED | YES | — |  |
@@ -67,28 +67,28 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 ```mermaid
 erDiagram
   CRYPTO_KEYS {
-    BIGINT id PK
-    VARCHAR(100) basename
+    INT id PK
+    VARCHAR basename
     INT version
-    VARCHAR(255) filename
-    VARCHAR(1024) file_path
-    CHAR(64) fingerprint
+    VARCHAR filename
+    VARCHAR file_path
+    VARCHAR fingerprint
     JSON key_meta
-    ENUM(''dek'',''kek'',''hmac'',''pepper'') key_type
-    VARCHAR(64) algorithm
-    SMALLINT length_bits
-    ENUM(''local'',''kms'',''imported'') origin
-    SET(''encrypt'',''decrypt'',''sign'',''verify'',''wrap'',''unwrap'') usage
-    VARCHAR(100) scope
-    ENUM(''active'',''retired'',''compromised'',''archived'') status
+    ENUM key_type
+    VARCHAR algorithm
+    INT length_bits
+    ENUM origin
+    ENUM usage
+    VARCHAR scope
+    ENUM status
     BOOLEAN is_backup_encrypted
-    LONGBLOB backup_blob
-    BIGINT created_by
-    DATETIME(6) created_at
-    DATETIME(6) activated_at
-    DATETIME(6) retired_at
-    BIGINT replaced_by
-    TEXT notes
+    BLOB backup_blob
+    INT created_by
+    DATETIME created_at
+    DATETIME activated_at
+    DATETIME retired_at
+    INT replaced_by
+    VARCHAR notes
   }
   CRYPTO_KEYS }o--|| CRYPTO_KEYS : "replaced_by"
   CRYPTO_KEYS }o--|| USERS : "created_by"
