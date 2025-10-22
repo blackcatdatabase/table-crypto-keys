@@ -19,7 +19,7 @@ Local key registry (DEKs, KEKs, HMAC, peppers).
 | origin | ENUM('local','kms','imported') | YES | — | Key origin. | enum: local, kms, imported |
 | usage | SET('encrypt','decrypt','sign','verify','wrap','unwrap') | YES | — | Allowed operations (SET field). | enum: encrypt, decrypt, sign, verify, wrap, unwrap |
 | scope | VARCHAR(100) | YES | — | Business scope tag (e.g., orders). |  |
-| status | ENUM('active','retired','compromised','archived') | NO | ''active'' | Lifecycle state. | enum: active, retired, compromised, archived |
+| status | ENUM('active','retired','compromised','archived') | NO | 'active' | Lifecycle state. | enum: active, retired, compromised, archived |
 | is_backup_encrypted | BOOLEAN | NO | 0 | Backup blob is encrypted with KEK. |  |
 | backup_blob | LONGBLOB | YES | — | Encrypted backup (binary). | PII: encrypted |
 | created_by | BIGINT UNSIGNED | YES | — | Admin user who created key (FK users.id). |  |

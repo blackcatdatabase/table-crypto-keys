@@ -52,7 +52,7 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 | origin | ENUM('local','kms','imported') | YES | — |  |
 | usage | SET('encrypt','decrypt','sign','verify','wrap','unwrap') | YES | — |  |
 | scope | VARCHAR(100) | YES | — |  |
-| status | ENUM('active','retired','compromised','archived') | NO | '' |  |
+| status | ENUM('active','retired','compromised','archived') | NO | 'active' |  |
 | is_backup_encrypted | BOOLEAN | NO | 0 |  |
 | backup_blob | LONGBLOB | YES | — |  |
 | created_by | BIGINT UNSIGNED | YES | — |  |
