@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\CryptoKeys;
 final class Definitions {
     // --- základní metadata ---
     public static function table(): string { return 'crypto_keys'; }
-    public static function contractView(): string { return 'v_crypto_keys_contract'; }
+    public static function contractView(): string { return 'vw_crypto_keys'; }
     /** @return string[] */
     public static function columns(): array { return [ 'id', 'basename', 'version', 'filename', 'file_path', 'fingerprint', 'key_meta', 'key_type', 'algorithm', 'length_bits', 'origin', 'usage', 'scope', 'status', 'is_backup_encrypted', 'backup_blob', 'created_by', 'created_at', 'activated_at', 'retired_at', 'replaced_by', 'notes' ]; }
     public static function pk(): string { return 'id'; }

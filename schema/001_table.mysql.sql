@@ -1,5 +1,6 @@
--- Auto-generated from schema-map.psd1 (map@6cefe8e)
--- table: crypto_keys
+-- Auto-generated from schema-map-mysql.psd1 (map@mtime:2025-10-24T09:13:35Z)
+-- engine: mysql
+-- table:  crypto_keys
 CREATE TABLE IF NOT EXISTS crypto_keys (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   basename VARCHAR(100) NOT NULL,
@@ -12,7 +13,7 @@ CREATE TABLE IF NOT EXISTS crypto_keys (
   algorithm VARCHAR(64) NULL,
   length_bits SMALLINT NULL,
   origin ENUM('local','kms','imported') NULL,
-  usage SET('encrypt','decrypt','sign','verify','wrap','unwrap') NULL,
+  `usage` SET('encrypt','decrypt','sign','verify','wrap','unwrap') NULL,
   scope VARCHAR(100) NULL,
   status ENUM('active','retired','compromised','archived') NOT NULL DEFAULT 'active',
   is_backup_encrypted BOOLEAN NOT NULL DEFAULT 0,

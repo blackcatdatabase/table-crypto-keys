@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\CryptoKeys;
 /**
  * Bezpečný builder WHERE/ORDER/LIMIT.
  * - whitelist filtrů: [ 'id', 'basename', 'version', 'filename', 'file_path', 'fingerprint', 'key_meta', 'key_type', 'algorithm', 'length_bits', 'origin', 'usage', 'scope', 'status', 'is_backup_encrypted', 'backup_blob', 'created_by', 'created_at', 'activated_at', 'retired_at', 'replaced_by', 'notes' ]
- * - whitelist pro LIKE hledání: [ 'basename', 'filename', 'file_path', 'fingerprint', 'algorithm', 'scope', 'notes' ]
+ * - whitelist pro LIKE hledání: [ 'basename', 'filename', 'file_path', 'fingerprint', 'key_type', 'algorithm', 'origin', 'usage', 'scope', 'status', 'notes' ]
  */
 final class Criteria {
     /** @var array<string,mixed> */
@@ -61,7 +61,7 @@ final class Criteria {
 
         // fulltext/LIKE (přes whitelist)
         if ($this->search !== null) {
-            $searchCols = [ 'basename', 'filename', 'file_path', 'fingerprint', 'algorithm', 'scope', 'notes' ];
+            $searchCols = [ 'basename', 'filename', 'file_path', 'fingerprint', 'key_type', 'algorithm', 'origin', 'usage', 'scope', 'status', 'notes' ];
             $likeParts = [];
             foreach ($searchCols as $i=>$c) {
                 if ($c === '') continue;
