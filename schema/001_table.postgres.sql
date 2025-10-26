@@ -1,4 +1,4 @@
--- Auto-generated from schema-map-postgres.psd1 (map@mtime:2025-10-24T09:46:38Z)
+-- Auto-generated from schema-map-postgres.psd1 (map@38d5403)
 -- engine: postgres
 -- table:  crypto_keys
 CREATE TABLE IF NOT EXISTS crypto_keys (
@@ -28,5 +28,5 @@ CREATE TABLE IF NOT EXISTS crypto_keys (
   CONSTRAINT chk_keys_type    CHECK (key_type IS NULL OR key_type IN ('dek','kek','hmac','pepper')),
   CONSTRAINT chk_keys_origin  CHECK (origin IS NULL OR origin IN ('local','kms','imported')),
   CONSTRAINT chk_keys_status  CHECK (status IN ('active','retired','compromised','archived')),
-  CONSTRAINT chk_keys_usage   CHECK (usage IS NULL OR usage <@ ARRAY['encrypt','decrypt','sign','verify','wrap','unwrap'])
+  CONSTRAINT chk_keys_usage   CHECK ("usage" IS NULL OR "usage" <@ ARRAY['encrypt','decrypt','sign','verify','wrap','unwrap'])
 );
