@@ -1,9 +1,9 @@
--- Auto-generated from schema-views-mysql.psd1 (map@38d5403)
+-- Auto-generated from schema-views-mysql.psd1 (map@c5e4097)
 -- engine: mysql
 -- table:  crypto_keys
 -- Contract view for [crypto_keys]
 -- Hides backup_blob (encrypted backup payload). Keeps metadata for inventory.
-CREATE OR REPLACE SQL SECURITY INVOKER VIEW vw_crypto_keys AS
+CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_crypto_keys AS
 SELECT
   id,
   basename,
@@ -25,5 +25,6 @@ SELECT
   activated_at,
   retired_at,
   replaced_by,
-  notes
+  notes,
+  CAST(LPAD(HEX(backup_blob), 64, '0') AS CHAR(64)) AS backup_blob_hex
 FROM crypto_keys;
