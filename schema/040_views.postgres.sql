@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-postgres.psd1 (map@c5e4097)
+-- Auto-generated from schema-views-postgres.psd1 (map@db2f8b8)
 -- engine: postgres
 -- table:  crypto_keys
 -- Contract view for [crypto_keys]
@@ -26,5 +26,5 @@ SELECT
   retired_at,
   replaced_by,
   notes,
-  encode(backup_blob, 'hex') AS backup_blob_hex
+  UPPER(encode(backup_blob,'hex'))::char(64) AS backup_blob_hex
 FROM crypto_keys;
