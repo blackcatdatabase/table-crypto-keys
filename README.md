@@ -2,7 +2,7 @@
 
 ![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
 
-<!-- Auto-generated from schema-map.psd1 @ 6cefe8e (2025-10-22T20:27:41+02:00) -->
+<!-- Auto-generated from schema-map-postgres.psd1 @ 62c9c93 (2025-11-20T21:38:11+01:00) -->
 
 > Schema package for table **crypto_keys** (repo: `crypto-keys`).
 
@@ -39,27 +39,27 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 ## Columns
 | Column | Type | Null | Default | Extra |
 |-------:|:-----|:----:|:--------|:------|
-| id | BIGINT UNSIGNED | — | — | AUTO_INCREMENT, PK |
+| id | BIGINT | — | AS | PK |
 | basename | VARCHAR(100) | NO | — |  |
-| version | INT | NO | — |  |
+| version | INTEGER | NO | — |  |
 | filename | VARCHAR(255) | YES | — |  |
 | file_path | VARCHAR(1024) | YES | — |  |
 | fingerprint | CHAR(64) | YES | — |  |
-| key_meta | JSON | YES | — |  |
-| key_type | ENUM('dek','kek','hmac','pepper') | YES | — |  |
+| key_meta | JSONB | YES | — |  |
+| key_type | TEXT | YES | — |  |
 | algorithm | VARCHAR(64) | YES | — |  |
 | length_bits | SMALLINT | YES | — |  |
-| origin | ENUM('local','kms','imported') | YES | — |  |
-| usage | SET('encrypt','decrypt','sign','verify','wrap','unwrap') | YES | — |  |
+| origin | TEXT | YES | — |  |
+| usage | TEXT[] | YES | — |  |
 | scope | VARCHAR(100) | YES | — |  |
-| status | ENUM('active','retired','compromised','archived') | NO | 'active' |  |
-| is_backup_encrypted | BOOLEAN | NO | 0 |  |
-| backup_blob | LONGBLOB | YES | — |  |
-| created_by | BIGINT UNSIGNED | YES | — |  |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) |  |
-| activated_at | DATETIME(6) | YES | — |  |
-| retired_at | DATETIME(6) | YES | — |  |
-| replaced_by | BIGINT UNSIGNED | YES | — |  |
+| status | TEXT | NO | 'active' |  |
+| is_backup_encrypted | BOOLEAN | NO | FALSE |  |
+| backup_blob | BYTEA | YES | — |  |
+| created_by | BIGINT | YES | — |  |
+| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) |  |
+| activated_at | TIMESTAMPTZ(6) | YES | — |  |
+| retired_at | TIMESTAMPTZ(6) | YES | — |  |
+| replaced_by | BIGINT | YES | — |  |
 | notes | TEXT | YES | — |  |
 
 ## Relationships
@@ -71,24 +71,24 @@ erDiagram
   CRYPTO_KEYS {
     INT id PK
     VARCHAR basename
-    INT version
+    INTEGER version
     VARCHAR filename
     VARCHAR file_path
     VARCHAR fingerprint
-    JSON key_meta
-    ENUM key_type
+    JSONB key_meta
+    VARCHAR key_type
     VARCHAR algorithm
     INT length_bits
-    ENUM origin
-    ENUM usage
+    VARCHAR origin
+    VARCHAR usage
     VARCHAR scope
-    ENUM status
+    VARCHAR status
     BOOLEAN is_backup_encrypted
-    BLOB backup_blob
+    BYTEA backup_blob
     INT created_by
-    DATETIME created_at
-    DATETIME activated_at
-    DATETIME retired_at
+    TIMESTAMPTZ created_at
+    TIMESTAMPTZ activated_at
+    TIMESTAMPTZ retired_at
     INT replaced_by
     VARCHAR notes
   }

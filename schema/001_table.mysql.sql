@@ -1,4 +1,4 @@
--- Auto-generated from schema-map-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-map-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  crypto_keys
 CREATE TABLE IF NOT EXISTS crypto_keys (
@@ -25,4 +25,4 @@ CREATE TABLE IF NOT EXISTS crypto_keys (
   replaced_by BIGINT UNSIGNED NULL,
   notes TEXT NULL,
   CONSTRAINT uq_keys_basename_version UNIQUE (basename, version)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
