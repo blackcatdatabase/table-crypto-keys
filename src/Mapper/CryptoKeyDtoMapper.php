@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class CryptoKeyDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'file_path' => 'filePath', 'key_meta' => 'keyMeta', 'key_type' => 'keyType', 'length_bits' => 'lengthBits', 'is_backup_encrypted' => 'isBackupEncrypted', 'backup_blob' => 'backupBlob', 'created_by' => 'createdBy', 'created_at' => 'createdAt', 'activated_at' => 'activatedAt', 'retired_at' => 'retiredAt', 'replaced_by' => 'replacedBy' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'basename' => 'basename', 'version' => 'version', 'filename' => 'filename', 'file_path' => 'filePath', 'fingerprint' => 'fingerprint', 'key_meta' => 'keyMeta', 'key_type' => 'keyType', 'algorithm' => 'algorithm', 'length_bits' => 'lengthBits', 'origin' => 'origin', 'usage' => 'usage', 'scope' => 'scope', 'status' => 'status', 'is_backup_encrypted' => 'isBackupEncrypted', 'backup_blob' => 'backupBlob', 'created_by' => 'createdBy', 'created_at' => 'createdAt', 'activated_at' => 'activatedAt', 'retired_at' => 'retiredAt', 'replaced_by' => 'replacedBy', 'notes' => 'notes' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [ 'is_backup_encrypted' ];

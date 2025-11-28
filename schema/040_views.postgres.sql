@@ -1,16 +1,7 @@
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
--- engine: postgres
--- table:  crypto_keys_latest
--- Latest version per basename
-CREATE OR REPLACE VIEW vw_crypto_keys_latest AS
-SELECT DISTINCT ON (basename)
-  basename, id, version, status, algorithm, key_type, activated_at, retired_at
-FROM crypto_keys
-ORDER BY basename, version DESC;
-
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
+-- Auto-generated from schema-views-postgres.psd1 (map@mtime:2025-11-27T15:36:13Z)
 -- engine: postgres
 -- table:  crypto_keys
+
 -- Contract view for [crypto_keys]
 -- Hides backup_blob (encrypted backup payload). Keeps metadata for inventory.
 CREATE OR REPLACE VIEW vw_crypto_keys AS
@@ -39,18 +30,3 @@ SELECT
   backup_blob,
   UPPER(encode(backup_blob,'hex')) AS backup_blob_hex
 FROM crypto_keys;
-
-
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
--- engine: postgres
--- table:  crypto_keys_inventory
--- Inventory of keys by type/status
-CREATE OR REPLACE VIEW vw_crypto_keys_inventory AS
-SELECT
-  key_type,
-  status,
-  COUNT(*) AS total
-FROM crypto_keys
-GROUP BY key_type, status
-ORDER BY key_type, status;
-
