@@ -1,4 +1,15 @@
--- Auto-generated from joins-postgres.psd1 (map@mtime:2025-11-27T17:17:38Z)
+-- Auto-generated from joins-postgres.yaml (map@94ebe6c)
+-- engine: postgres
+-- view:   crypto_keys_latest
+
+-- Latest version per basename
+CREATE OR REPLACE VIEW vw_crypto_keys_latest AS
+SELECT DISTINCT ON (basename)
+  basename, id, version, status, algorithm, key_type, activated_at, retired_at
+FROM crypto_keys
+ORDER BY basename, version DESC;
+
+-- Auto-generated from joins-postgres.yaml (map@94ebe6c)
 -- engine: postgres
 -- view:   crypto_keys_inventory
 
@@ -11,15 +22,4 @@ SELECT
 FROM crypto_keys
 GROUP BY key_type, status
 ORDER BY key_type, status;
-
--- Auto-generated from joins-postgres.psd1 (map@mtime:2025-11-27T17:17:38Z)
--- engine: postgres
--- view:   crypto_keys_latest
-
--- Latest version per basename
-CREATE OR REPLACE VIEW vw_crypto_keys_latest AS
-SELECT DISTINCT ON (basename)
-  basename, id, version, status, algorithm, key_type, activated_at, retired_at
-FROM crypto_keys
-ORDER BY basename, version DESC;
 
