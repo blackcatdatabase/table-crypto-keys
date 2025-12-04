@@ -1,4 +1,4 @@
--- Auto-generated from joins-postgres.yaml (map@94ebe6c)
+-- Auto-generated from joins-postgres.yaml (map@85230ed)
 -- engine: postgres
 -- view:   crypto_keys_latest
 
@@ -9,7 +9,7 @@ SELECT DISTINCT ON (basename)
 FROM crypto_keys
 ORDER BY basename, version DESC;
 
--- Auto-generated from joins-postgres.yaml (map@94ebe6c)
+-- Auto-generated from joins-postgres.yaml (map@85230ed)
 -- engine: postgres
 -- view:   crypto_keys_inventory
 

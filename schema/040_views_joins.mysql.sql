@@ -1,4 +1,4 @@
--- Auto-generated from joins-mysql.yaml (map@94ebe6c)
+-- Auto-generated from joins-mysql.yaml (map@85230ed)
 -- engine: mysql
 -- view:   crypto_keys_latest
 
@@ -21,7 +21,7 @@ FROM (
 WHERE rn = 1
 ORDER BY basename;
 
--- Auto-generated from joins-mysql.yaml (map@94ebe6c)
+-- Auto-generated from joins-mysql.yaml (map@85230ed)
 -- engine: mysql
 -- view:   crypto_keys_inventory
 
