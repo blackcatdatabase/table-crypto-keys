@@ -1,5 +1,18 @@
 -- Auto-generated from joins-mysql.yaml (map@85230ed)
 -- engine: mysql
+-- view:   crypto_keys_inventory
+
+CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_crypto_keys_inventory AS
+SELECT
+  key_type,
+  status,
+  COUNT(*) AS total
+FROM crypto_keys
+GROUP BY key_type, status
+ORDER BY key_type, status;
+
+-- Auto-generated from joins-mysql.yaml (map@85230ed)
+-- engine: mysql
 -- view:   crypto_keys_latest
 
 CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_crypto_keys_latest AS
@@ -20,17 +33,4 @@ FROM (
 ) ranked
 WHERE rn = 1
 ORDER BY basename;
-
--- Auto-generated from joins-mysql.yaml (map@85230ed)
--- engine: mysql
--- view:   crypto_keys_inventory
-
-CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_crypto_keys_inventory AS
-SELECT
-  key_type,
-  status,
-  COUNT(*) AS total
-FROM crypto_keys
-GROUP BY key_type, status
-ORDER BY key_type, status;
 
