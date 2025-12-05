@@ -38,7 +38,7 @@ final class Criteria extends BaseCriteria
     /** Columns used for full-text LIKE/ILIKE searches. */
     protected function searchable(): array
     {
-        return [ 'basename', 'filename', 'file_path', 'fingerprint', 'key_type', 'algorithm', 'origin', 'usage', 'scope', 'status', 'notes' ];
+        return [ 'basename', 'filename', 'file_path', 'fingerprint', 'algorithm', 'scope', 'notes' ];
     }
 
 /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
