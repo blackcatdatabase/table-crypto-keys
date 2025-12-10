@@ -108,11 +108,12 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `created_at` – default=CURRENT_TIMESTAMP(6)
-- `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
 - `key_type` – enum
 - `origin` – enum
+- `usage` – enum
 - `status` – default=active, enum
+- `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
