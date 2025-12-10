@@ -1,107 +1,202 @@
 # 📦 Crypto Keys
 
-![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
+> Auto-generated from [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) (map@sha1:5221bb5c65d0fbe010594635f9efb6fc13c307b2). Do not edit manually.
+> Targets: PHP 8.3; MySQL 8.x / MariaDB 10.4; Postgres 15+.
 
-<!-- Auto-generated from schema-map-postgres.psd1 @ 62c9c93 (2025-11-20T21:38:11+01:00) -->
+![PHP](https://img.shields.io/badge/PHP-8.3-blueviolet) ![DB](https://img.shields.io/badge/DB-MySQL%20%7C%20MariaDB%20%7C%20Postgres-informational) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-success)
 
-> Schema package for table **crypto_keys** (repo: `crypto-keys`).
+![Docs](https://img.shields.io/badge/Docs-ready-success) ![Changelog](https://img.shields.io/badge/Changelog-ok-success) ![Changelog%20freshness](https://img.shields.io/badge/Changelog%20freshness-fresh-success) ![Seeds](https://img.shields.io/badge/Seeds-missing-critical) ![Views](https://img.shields.io/badge/Views-ok-success) ![Lineage](https://img.shields.io/badge/Lineage-linked-success) ![Drift](https://img.shields.io/badge/Drift-clean-success) ![Index%20coverage](https://img.shields.io/badge/Index%20coverage-ready-success) ![PII](https://img.shields.io/badge/PII-review-critical)
 
-## Files
-```
-schema/
-  001_table.sql
-  # (no deferred indexes declared in map)
-  030_foreign_keys.sql
-```
+> 🔥 Lineage hotspot: 6 FK links detected. Make sure cascades/nullability are intentional.
 
-## Quick apply
-```bash
-# Apply schema (Linux/macOS):
-mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < schema/001_table.sql
-mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < schema/030_foreign_keys.sql
-```
+✅ No engine drift detected
 
-```powershell
-# Apply schema (Windows PowerShell):
-mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/001_table.sql
-mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/030_foreign_keys.sql
-```
+> **Schema snapshot**
+> Map: [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) · Docs: [docs/definitions.md](docs/definitions.md) · Drift warnings: 0
+> Lineage: 2 outbound / 4 inbound · ✅ No engine drift detected · Index coverage: ready · PII flags: 9 · Changelog: fresh
 
-## Docker quickstart
-```bash
-# Spin up a throwaway MySQL and apply just this package:
-docker run --rm -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=app -p 3307:3306 -d mysql:8
-sleep 15
-mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/001_table.sql
-mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
-```
+## Quick Links
+| What | Link | Notes |
+| --- | --- | --- |
+| Schema map | [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) | Source for table metadata |
+| Pkg folder | [packages/crypto-keys](https://github.com/blackcatacademy/blackcat-database/blob/main/packages/crypto-keys) | Repo location |
+| Definitions | [docs/definitions.md](docs/definitions.md) | Column/index/FK docs |
+| Engine differences | [docs/definitions.md#engine-differences](docs/definitions.md#engine-differences) | Drift section in definitions |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) | Recent changes |
 
-## Columns
-| Column | Type | Null | Default | Extra |
-|-------:|:-----|:----:|:--------|:------|
-| id | BIGINT | — | AS | PK |
-| basename | VARCHAR(100) | NO | — |  |
-| version | INTEGER | NO | — |  |
-| filename | VARCHAR(255) | YES | — |  |
-| file_path | VARCHAR(1024) | YES | — |  |
-| fingerprint | CHAR(64) | YES | — |  |
-| key_meta | JSONB | YES | — |  |
-| key_type | TEXT | YES | — |  |
-| algorithm | VARCHAR(64) | YES | — |  |
-| length_bits | SMALLINT | YES | — |  |
-| origin | TEXT | YES | — |  |
-| usage | TEXT[] | YES | — |  |
-| scope | VARCHAR(100) | YES | — |  |
-| status | TEXT | NO | 'active' |  |
-| is_backup_encrypted | BOOLEAN | NO | FALSE |  |
-| backup_blob | BYTEA | YES | — |  |
-| created_by | BIGINT | YES | — |  |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) |  |
-| activated_at | TIMESTAMPTZ(6) | YES | — |  |
-| retired_at | TIMESTAMPTZ(6) | YES | — |  |
-| replaced_by | BIGINT | YES | — |  |
-| notes | TEXT | YES | — |  |
+## Contents
+| Section | Purpose |
+| --- | --- |
+| [Quick Links](#quick-links) | Jump to definitions/changelog/tooling |
+| [At a Glance](#at-a-glance) | Key counts (columns/indexes/views) |
+| [Summary](#summary) | Compact status matrix for this package |
+| [Relationship Graph](#relationship-graph) | FK lineage snapshot |
+| [Engine Matrix](#engine-matrix) | MySQL/Postgres coverage |
+| [Engine Drift](#engine-drift) | Cross-engine diffs |
+| [Constraints Snapshot](#constraints-snapshot) | Defaults/enums/checks |
+| [Compliance Notes](#compliance-notes) | PII/secret hints |
+| [Schema Files](#schema-files) | Scripts by engine |
+| [Views](#views) | View definitions |
+| [Seeds](#seeds) | Fixtures/smoke data |
+| [Usage](#usage) | Runnable commands |
+| [Quality Gates](#quality-gates) | Readiness checklist |
+| [Regeneration](#regeneration) | Rebuild docs/readme |
 
-## Relationships
-- FK → **crypto_keys** via (replaced_by) (ON DELETE SET NULL).
-- FK → **users** via (created_by) (ON DELETE SET NULL).
+## At a Glance
+| Metric | Count |
+| --- | --- |
+| Columns | **24** |
+| Indexes | **3** |
+| Foreign keys | **4** |
+| Unique keys | **3** |
+| Outbound links (FK targets) | **2** |
+| Inbound links (tables depending on this) | **4** |
+| Views | **8** |
+| Seeds | **0** |
+| Drift warnings | **0** |
+| PII flags | **9** |
 
+## Summary
+| Item | Value |
+| --- | --- |
+| Table | crypto_keys |
+| Schema files | **8** |
+| Views | **4** |
+| Seeds | **0** |
+| Docs | **present** |
+| Changelog | **present** |
+| Changelog freshness | fresh (threshold 45 d) |
+| Lineage | outbound **2** / inbound **4** |
+| Index coverage | **ready** |
+| Engine targets | PHP 8.3; MySQL/MariaDB/Postgres |
+
+## Relationship Graph
+> ⚡ Neon FK map below is parsed straight from docs/definitions.md for quick orientation.
 ```mermaid
-erDiagram
-  CRYPTO_KEYS {
-    INT id PK
-    VARCHAR basename
-    INTEGER version
-    VARCHAR filename
-    VARCHAR file_path
-    VARCHAR fingerprint
-    JSONB key_meta
-    VARCHAR key_type
-    VARCHAR algorithm
-    INT length_bits
-    VARCHAR origin
-    VARCHAR usage
-    VARCHAR scope
-    VARCHAR status
-    BOOLEAN is_backup_encrypted
-    BYTEA backup_blob
-    INT created_by
-    TIMESTAMPTZ created_at
-    TIMESTAMPTZ activated_at
-    TIMESTAMPTZ retired_at
-    INT replaced_by
-    VARCHAR notes
-  }
-  CRYPTO_KEYS }o--|| CRYPTO_KEYS : "replaced_by"
-  CRYPTO_KEYS }o--|| USERS : "created_by"
+graph LR
+  %% Neon lineage view (auto-parsed from docs/definitions.md)
+  classDef center fill:#0b1021,stroke:#ff6b6b,stroke-width:3px,color:#fefefe;
+  classDef link fill:#0a1f33,stroke:#64dfdf,stroke-width:2px,color:#e8f7ff;
+  classDef accent fill:#1d1b4c,stroke:#a855f7,stroke-width:2px,color:#f5e1ff;
+  classDef inbound fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2fcef;
+  crypto_keys["crypto_keys"]:::center
+  crypto_keys -->|FK| crypto_keys["crypto_keys"]:::link
+  crypto_keys -->|FK| users["users"]:::accent
+  book_assets["book_assets"]:::inbound -->|FK| crypto_keys
+  crypto_keys["crypto_keys"]:::inbound -->|FK| crypto_keys
+  key_events["key_events"]:::inbound -->|FK| crypto_keys
+  key_usage["key_usage"]:::inbound -->|FK| crypto_keys
+  linkStyle 0 stroke:#ff6b6b,stroke-width:3px,opacity:0.92;
+  linkStyle 1 stroke:#64dfdf,stroke-width:3px,opacity:0.92;
+  linkStyle 2 stroke:#a855f7,stroke-width:3px,opacity:0.92;
+  linkStyle 3 stroke:#ffd166,stroke-width:3px,opacity:0.92;
+  linkStyle 4 stroke:#4ade80,stroke-width:3px,opacity:0.92;
+  linkStyle 5 stroke:#ff6b6b,stroke-width:3px,opacity:0.92;
 ```
 
-## Indexes
-- No deferred indexes declared for this table.
+- Outbound (depends on): "crypto_keys", "users"
+- Inbound (relies on this): "book_assets", "crypto_keys", "key_events", "key_usage"
+- Legend: central node = this table, teal/purple arrows = outbound FK targets, green arrows = inbound FK sources.
 
-## Notes
-- Generated from the umbrella repository **blackcat-database** using `scripts/schema-map.psd1`.
-- To change the schema, update the map and re-run the generators.
+## Engine Matrix
+| Engine | Support |
+| --- | --- |
+| mysql | ✅ schema(4)<br/>✅ views(2)<br/>⚠️ seeds |
+| postgres | ✅ schema(4)<br/>✅ views(2)<br/>⚠️ seeds |
 
-## License
-Distributed under the **BlackCat Store Proprietary License v1.0**. See `LICENSE`.
+## Engine Drift
+_No engine differences detected._
+
+## Constraints Snapshot
+- `key_type` – enum
+- `origin` – enum
+- `usage` – enum
+- `status` – default=active, enum
+- `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
+- `created_at` – default=CURRENT_TIMESTAMP(6)
+
+## Schema Files
+| File | Engine |
+| --- | --- |
+| [001_table.mysql.sql](schema/001_table.mysql.sql) | mysql |
+| [001_table.postgres.sql](schema/001_table.postgres.sql) | postgres |
+| [030_foreign_keys.mysql.sql](schema/030_foreign_keys.mysql.sql) | mysql |
+| [030_foreign_keys.postgres.sql](schema/030_foreign_keys.postgres.sql) | postgres |
+| [040_views_joins.mysql.sql](schema/040_views_joins.mysql.sql) | mysql |
+| [040_views_joins.postgres.sql](schema/040_views_joins.postgres.sql) | postgres |
+| [040_views.mysql.sql](schema/040_views.mysql.sql) | mysql |
+| [040_views.postgres.sql](schema/040_views.postgres.sql) | postgres |
+
+## Views
+| File | Engine | Source |
+| --- | --- | --- |
+| [040_views_joins.mysql.sql](schema/040_views_joins.mysql.sql) | mysql | package |
+| [040_views_joins.postgres.sql](schema/040_views_joins.postgres.sql) | postgres | package |
+| [040_views.mysql.sql](schema/040_views.mysql.sql) | mysql | package |
+| [040_views.postgres.sql](schema/040_views.postgres.sql) | postgres | package |
+
+## Seeds
+_No seed files found._
+
+## Compliance Notes
+> ⚠️ Potential PII/secret fields – review retention/encryption policies:
+- basename (key)
+- created_by (key)
+- fingerprint (key)
+- id (key)
+- key_meta (key)
+- key_type (key)
+- length_bits (key)
+- origin (key)
+- replaced_by (key)
+
+## Usage
+```bash
+# Install/upgrade schema
+pwsh -NoLogo -NoProfile -File scripts/schema-tools/Migrate-DryRun.ps1 -Package crypto-keys -Apply
+# Split schema to packages
+pwsh -NoLogo -NoProfile -File scripts/schema-tools/Split-SchemaToPackages.ps1
+# Generate PHP DTO/Repo from schema
+pwsh -NoLogo -NoProfile -File scripts/schema-tools/Generate-PhpFromSchema.ps1 -SchemaDir scripts/schema -TemplatesRoot scripts/templates/php -ModulesRoot packages -NameResolution detect -Force
+# Validate SQL across packages
+pwsh -NoLogo -NoProfile -File scripts/schema-tools/Lint-Sql.ps1 -PackagesDir packages
+```
+
+- PHPUnit (full DB matrix):
+```bash
+BC_DB=mysql vendor/bin/phpunit --configuration tests/phpunit.xml.dist --testsuite "DB Integration"
+BC_DB=postgres vendor/bin/phpunit --configuration tests/phpunit.xml.dist --testsuite "DB Integration"
+BC_DB=mariadb vendor/bin/phpunit --configuration tests/phpunit.xml.dist --testsuite "DB Integration"
+```
+
+## Quality Gates
+- [x] Definitions present
+- [x] Changelog present
+- [x] Changelog fresh
+- [x] Index coverage (PK + index)
+- [x] Outbound lineage captured
+- [x] Inbound lineage mapped
+- [x] ERD renderable (mermaid)
+- [ ] Seeds available – add smoke data seeds
+
+## Maintenance Checklist
+- [ ] Update schema map and split: Split-SchemaToPackages.ps1
+- [ ] Regenerate PHP DTO/Repo: Generate-PhpFromSchema.ps1
+- [ ] Rebuild definitions + README + docs index
+- [ ] Ensure seeds/smoke data are present (if applicable)
+- [ ] Lint SQL + run full PHPUnit DB matrix
+
+## Regeneration
+```bash
+# Rebuild definitions (docs/definitions.md)
+pwsh -NoLogo -NoProfile -File scripts/schema-tools/Build-Definitions.ps1 -Force
+# Regenerate package READMEs
+pwsh -NoLogo -NoProfile -File scripts/docs/New-PackageReadmes.ps1 -Force
+# Regenerate docs index
+pwsh -NoLogo -NoProfile -File scripts/docs/New-DocsIndex.ps1 -Force
+# Regenerate package changelogs
+pwsh -NoLogo -NoProfile -File scripts/docs/New-PackageChangelogs.ps1 -Force
+```
+
+---
+> ⚖️ License: BlackCat Proprietary – detailed terms in [LICENSE](https://github.com/blackcatacademy/blackcat-database/blob/main/LICENSE).
