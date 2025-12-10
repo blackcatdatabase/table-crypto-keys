@@ -19,7 +19,7 @@
 | What | Link | Notes |
 | --- | --- | --- |
 | Schema map | [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) | Source for table metadata |
-| Pkg folder | [packages\crypto-keys](https://github.com/blackcatacademy/blackcat-database/blob/main/packages\crypto-keys) | Repo location |
+| Pkg folder | [packages\crypto-keys](https://github.com/blackcatacademy/blackcat-database/blob/main/packages/crypto-keys) | Repo location |
 | Definitions | [docs/definitions.md](docs/definitions.md) | Column/index/FK docs |
 | Engine differences | [docs/definitions.md#engine-differences](docs/definitions.md#engine-differences) | Drift section in definitions |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) | Recent changes |
@@ -108,11 +108,11 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `created_at` – default=CURRENT_TIMESTAMP(6)
 - `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 - `key_type` – enum
-- `origin` – enum
 - `status` – default=active, enum
+- `origin` – enum
 
 ## Schema Files
 | File | Engine |
