@@ -109,7 +109,7 @@ _No engine differences detected._
 
 ## Constraints Snapshot
 - `created_at` – default=CURRENT_TIMESTAMP(6)
-- `is_backup_encrypted` – default=0
+- `is_backup_encrypted` – default=FALSE
 - `key_type` – enum
 - `origin` – enum
 - `status` – default=active, enum
