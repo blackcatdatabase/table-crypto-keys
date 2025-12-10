@@ -80,8 +80,8 @@ graph LR
   classDef accent fill:#1d1b4c,stroke:#a855f7,stroke-width:2px,color:#f5e1ff;
   classDef inbound fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2fcef;
   crypto_keys["crypto_keys"]:::center
-  crypto_keys -->|FK| users["users"]:::link
-  crypto_keys -->|FK| crypto_keys["crypto_keys"]:::accent
+  crypto_keys -->|FK| crypto_keys["crypto_keys"]:::link
+  crypto_keys -->|FK| users["users"]:::accent
   book_assets["book_assets"]:::inbound -->|FK| crypto_keys
   crypto_keys["crypto_keys"]:::inbound -->|FK| crypto_keys
   key_events["key_events"]:::inbound -->|FK| crypto_keys
@@ -108,11 +108,11 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
 - `created_at` – default=CURRENT_TIMESTAMP(6)
+- `is_backup_encrypted` – default=mysql: 0 / postgres: FALSE
 - `key_type` – enum
-- `status` – default=active, enum
 - `origin` – enum
+- `status` – default=active, enum
 
 ## Schema Files
 | File | Engine |
