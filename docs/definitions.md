@@ -15,7 +15,7 @@ Local key registry (DEKs, KEKs, HMAC, peppers).
 | filename | VARCHAR(255) | YES |  | Optional filename where stored. |
 | fingerprint | CHAR(64) | YES |  | Key fingerprint / digest. |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| is_backup_encrypted | BOOLEAN | NO | FALSE | Backup blob is encrypted with KEK. |
+| is_backup_encrypted | BOOLEAN | NO | mysql: 0 / postgres: FALSE | Backup blob is encrypted with KEK. |
 | key_meta | mysql: JSON / postgres: JSONB | YES |  | JSON metadata (key parameters). |
 | key_type | mysql: ENUM('dek','kek','hmac','pepper') / postgres: TEXT | YES |  | Key purpose type. (enum: dek, kek, hmac, pepper) |
 | length_bits | SMALLINT | YES |  | Key length in bits. |
@@ -71,9 +71,9 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_crypto_keys | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
-| vw_crypto_keys_inventory | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_crypto_keys_latest | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_crypto_keys | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
-| vw_crypto_keys_inventory | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
-| vw_crypto_keys_latest | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_crypto_keys | mysql | algorithm=MERGE, security=INVOKER | [../schema/040_views.mysql.sql](../schema/040_views.mysql.sql) |
+| vw_crypto_keys_inventory | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_crypto_keys_latest | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_crypto_keys | postgres |  | [../schema/040_views.postgres.sql](../schema/040_views.postgres.sql) |
+| vw_crypto_keys_inventory | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
+| vw_crypto_keys_latest | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
