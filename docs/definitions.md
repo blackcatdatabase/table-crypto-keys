@@ -11,8 +11,8 @@ Local key registry (DEKs, KEKs, HMAC, peppers).
 | basename | VARCHAR(100) | NO |  | Logical key basename. |
 | created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | created_by | BIGINT | YES |  | Admin user who created key (FK users.id). |
-| file_path | VARCHAR(1024) | YES |  | Filesystem path or vault path. |
 | filename | VARCHAR(255) | YES |  | Optional filename where stored. |
+| file_path | VARCHAR(1024) | YES |  | Filesystem path or vault path. |
 | fingerprint | CHAR(64) | YES |  | Key fingerprint / digest. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | is_backup_encrypted | BOOLEAN | NO | mysql: 0 / postgres: FALSE | Backup blob is encrypted with KEK. |
