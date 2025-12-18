@@ -1,0 +1,74 @@
+{
+  "tables": {
+    "crypto_keys": {
+      "columns": {
+        "activated_at": {
+          "strategy": "passthrough"
+        },
+        "algorithm": {
+          "strategy": "passthrough"
+        },
+        "backup_blob": {
+          "strategy": "passthrough"
+        },
+        "basename": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "created_by": {
+          "strategy": "passthrough"
+        },
+        "file_path": {
+          "strategy": "passthrough"
+        },
+        "filename": {
+          "strategy": "passthrough"
+        },
+        "fingerprint": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "is_backup_encrypted": {
+          "strategy": "passthrough"
+        },
+        "key_meta": {
+          "strategy": "passthrough"
+        },
+        "key_type": {
+          "strategy": "passthrough"
+        },
+        "length_bits": {
+          "strategy": "passthrough"
+        },
+        "notes": {
+          "strategy": "passthrough"
+        },
+        "origin": {
+          "strategy": "passthrough"
+        },
+        "replaced_by": {
+          "strategy": "passthrough"
+        },
+        "retired_at": {
+          "strategy": "passthrough"
+        },
+        "scope": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        },
+        "usage": {
+          "strategy": "passthrough"
+        },
+        "version": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
