@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'basename', 'filename', 'file_path', 'fingerprint', 'algorithm', 'scope', 'notes' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'basename', 'version', 'filename', 'file_path', 'fingerprint', 'key_type', 'algorithm', 'length_bits', 'origin', 'usage', 'scope', 'status', 'is_backup_encrypted', 'created_by', 'created_at', 'activated_at', 'retired_at', 'replaced_by', 'notes' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'basename', 'version', 'filename', 'file_path', 'fingerprint', 'key_type', 'algorithm', 'length_bits', 'origin', 'usage', 'scope', 'status', 'is_backup_encrypted', 'created_by', 'created_at', 'activated_at', 'retired_at', 'replaced_by', 'notes' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
